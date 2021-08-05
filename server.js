@@ -31,6 +31,9 @@ app.use('/js', express.static(path.resolve(__dirname,"assets/js")))
 app.use('/', require('./server/routes/router'))
 
 
+app.get('/', (req, res) =>{
+    res.send("This app is working well.")
+})
 app.listen(PORT, () =>{
     console.log(`Server listening on port ${PORT}`)
 })
