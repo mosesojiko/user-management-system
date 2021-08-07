@@ -15,7 +15,7 @@ $("#update-user").submit(function(event){
     console.log(data)
     //pass the data to the put request for update
     var request = {
-         "url": `http://localhost:3000/api/users/${data.id}`,
+         "url": `https://my-user-management.herokuapp.com/api/users/${data.id}`,
          "method": "PUT",
          "data": data
     }
@@ -32,7 +32,7 @@ if(window.location.pathname == '/'){
           var id = $(this).attr('data-id')
 
           var request = {
-               "url": `http://localhost:3000/api/users/${id}`,
+               "url": `https://my-user-management.herokuapp.com/api/users/${id}`,
                "method": "DELETE",
           }
 
