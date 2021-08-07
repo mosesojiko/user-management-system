@@ -5,4 +5,4 @@ A crud application for managing users of a particular website. By crud applicati
 - Update a user's information
 - Delete a user
 
-View the [demo here]{https://my-user-management.herokuapp.com}
+View the [demo here](https://my-user-management.herokuapp.com)
