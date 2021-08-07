@@ -8,7 +8,7 @@ exports.homeRoutes = (req, res) =>{
         res.render('index', {users: response.data}) //data is a key in the response object
     })
     .catch(err =>{
-        res.send(err)
+        res.send({error:err.message})
     })
     
 }
@@ -23,7 +23,7 @@ exports.update_user = (req, res) =>{
         res.render('update-user', {user: userdata.data})
     })
     .catch(err =>{
-        res.send(err)
+        res.send({error:err.message})
     })
    
 }

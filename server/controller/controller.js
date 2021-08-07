@@ -19,10 +19,10 @@ exports.create = (req, res) =>{
   .save(user)
   .then(data =>{
       //res.send(data)
-      res.redirect('/add-user') //redirect the user to the add user page i.e back to the form again.
+      res.redirect('/') //redirect the user to the add user page i.e back to the form again.
   })
   .catch(err =>{
-      res.status(500).send({
+      res.status(500).json({
           message: err.message || "Some error occured while creating the user."
       })
   })
@@ -37,13 +37,13 @@ exports.find = (req, res) =>{
        UserDb.findById(id)
        .then(data =>{
            if(!data){
-               res.status(404).send({message:`User with id ${id} is not found.`})
+               res.status(404).json({message:`User with id ${id} is not found.`})
            }else{
                res.send(data)
            }
        })
        .catch(err =>{
-           res.status(500).send({massage: "Error reyrieving user with id" + id})
+           res.status(500).json({massage: err.message || "Error reyrieving user with id" + id})
        })
     }else{ //find all users
         UserDb.find()
@@ -51,7 +51,7 @@ exports.find = (req, res) =>{
         res.send(user)
     })
     .catch(err =>{
-        res.status(500).send({message: err.message || "An error occured."})
+        res.status(500).json({message: err.message || "An error occured."})
     })
 
     }
@@ -63,19 +63,19 @@ exports.find = (req, res) =>{
 exports.update = (req, res) =>{
   if(!req.body){
       return res.status(400)
-      .send({message: "Data to update cannot be empty."})
+      .json({message: "Data to update cannot be empty."})
   }
   const id = req.params.id;
   UserDb.findByIdAndUpdate(id, req.body, { useFindAndModify:false })
   .then(data =>{
       if(!data){
-          res.status(400).send({message: `Cannot update user with ${id}. Maybe user not found.`})
+          res.status(400).json({message: `Cannot update user with ${id}. Maybe user not found.`})
       }else{
           res.send(data)
       }
   })
   .catch(err =>{
-      res.status(500).send({message:err.message || "Error updating user information."})
+      res.status(500).json({message:err.message || "Error updating user information."})
   })
 }
 
@@ -85,13 +85,13 @@ exports.delete = (req, res) =>{
     UserDb.findByIdAndDelete(id)
     .then(data =>{
         if(!data){
-            res.status(404).send({message: `Cannot delete user with id: ${id}, maybe id is wrong.`})
+            res.status(404).json({message: `Cannot delete user with id: ${id}, maybe id is wrong.`})
         }else{
             res.send("User was deleted successfully.")
         }
     })
     .catch(err =>{
-        res.status(500).send({
+        res.status(500).json({
             message: err.message || `Could not delete user with id ${id}.`
         })
     })

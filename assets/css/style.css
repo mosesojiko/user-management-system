@@ -52,7 +52,7 @@ a {
     font-weight: bolder;
 }
 #header nav {
-    background-color: #4a00a0;
+    background-color:indigo;
     padding: 40px 0;
     width: 100%;
     margin-top: 20px;
@@ -83,15 +83,15 @@ table {
     text-align: center;
     border-top: 1px solid var(--border);
 }
-.table td > a.btn {
-    padding: 3em 1em;
-    font-size: 1.1em;
-    margin:0.2em;
-}
 
+
+/* 
 .table tr:hover {
     background-color:orchid
 }
+ */
+
+
 .table tr:hover td > a {
     box-shadow: none;
 }
@@ -105,6 +105,12 @@ td {
     font-weight: bold;
     border-bottom: 1px solid grey;
 }
+
+.table tr:hover{
+    background-color:orchid
+}
+
+
 /* make page responsive */
 @media only screen and (max-width: 1024px) {
     table,thead,tbody,th,td,tr {
